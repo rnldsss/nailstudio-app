@@ -38,6 +38,21 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
+// Home route
+Route::get('/', function () {
+    view()->share([
+        'menuItems' => [
+            ['route' => 'home', 'label' => 'Home', 'active' => true],
+            ['route' => 'products.index', 'label' => 'Products', 'active' => false],
+            ['route' => 'profile.index', 'label' => 'Profile', 'active' => false],
+        ],
+        'isLoggedIn' => true,
+        'username' => 'zahara'
+    ]);
+    
+    return view('welcome');
+})->name('home');
+
 // Profile Routes
 Route::prefix('profile')->name('profile.')->group(function () {
     Route::get('/', [ProfileController::class, 'index'])->name('index');
@@ -49,26 +64,12 @@ Route::prefix('profile')->name('profile.')->group(function () {
     // Address routes
     Route::prefix('addresses')->name('addresses.')->group(function () {
         Route::get('/create', function () { 
-            $menuItems = [
-                [
-                    'route' => 'home',
-                    'label' => 'Home',
-                    'active' => false
-                ],
-                [
-                    'route' => 'products.index',
-                    'label' => 'Products',
-                    'active' => false
-                ],
-                [
-                    'route' => 'profile.index',
-                    'label' => 'Profile',
-                    'active' => true
-                ],
-            ];
-            
             view()->share([
-                'menuItems' => $menuItems,
+                'menuItems' => [
+                    ['route' => 'home', 'label' => 'Home', 'active' => false],
+                    ['route' => 'products.index', 'label' => 'Products', 'active' => false],
+                    ['route' => 'profile.index', 'label' => 'Profile', 'active' => true],
+                ],
                 'isLoggedIn' => true,
                 'username' => 'zahara'
             ]);
@@ -77,26 +78,12 @@ Route::prefix('profile')->name('profile.')->group(function () {
         })->name('create');
         
         Route::get('/{id}/edit', function ($id) { 
-            $menuItems = [
-                [
-                    'route' => 'home',
-                    'label' => 'Home',
-                    'active' => false
-                ],
-                [
-                    'route' => 'products.index',
-                    'label' => 'Products',
-                    'active' => false
-                ],
-                [
-                    'route' => 'profile.index',
-                    'label' => 'Profile',
-                    'active' => true
-                ],
-            ];
-            
             view()->share([
-                'menuItems' => $menuItems,
+                'menuItems' => [
+                    ['route' => 'home', 'label' => 'Home', 'active' => false],
+                    ['route' => 'products.index', 'label' => 'Products', 'active' => false],
+                    ['route' => 'profile.index', 'label' => 'Profile', 'active' => true],
+                ],
                 'isLoggedIn' => true,
                 'username' => 'zahara'
             ]);
@@ -105,8 +92,7 @@ Route::prefix('profile')->name('profile.')->group(function () {
         })->name('edit');
         
         Route::get('/{id}/delete', function ($id) { return back(); })->name('delete');
-    });
-    
+    });    
     // Orders routes
     Route::prefix('orders')->name('orders.')->group(function () {
         Route::get('/{id}', function ($id) { 
@@ -259,5 +245,21 @@ Route::get('/register', function () {
     
     return view('auth.register'); 
 })->name('register');
+
+// Add these routes to handle form submissions for addresses
+Route::prefix('addresses')->name('addresses.')->group(function () {
+    // ... existing routes ...
+    
+    // Add these routes
+    Route::post('/store', function () {
+        // In a real app, validate and save the address here
+        return redirect()->route('profile.index')->with('success', 'Address added successfully');
+    })->name('store');
+    
+    Route::put('/{id}/update', function ($id) {
+        // In a real app, validate and update the address here
+        return redirect()->route('profile.index')->with('success', 'Address updated successfully');
+    })->name('update');
+});
 
 Route::get('/logout', function () { return redirect('/'); })->name('logout');
