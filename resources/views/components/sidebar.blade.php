@@ -1,7 +1,6 @@
 <section id="sidebar">
     <a href="{{ url('/') }}" class="brand">
-        <i class='bx bxs-smile'></i>
-        <span class="text">Nama Admin</span>
+        <img src="{{ asset('images/logonails.png')}}" width=75 height=75></img>
     </a>
     <ul class="side-menu top">
         {{-- Dashboard / Order/Transaction --}}
