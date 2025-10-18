@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Nail Art Studio</title>
@@ -24,14 +23,8 @@
 
     @include('layouts.navbar', get_defined_vars()) 
 
-    {{-- Konten utama halaman Anda diletakkan di bawah sini --}}
-=======
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
->>>>>>> e496c9c72586d30e299b72460ff76a03dac63300
+    {{-- Tempat konten unik setiap halaman (misal: Top Sellers) akan dimasukkan --}}
+    @yield('content') 
     
 </body>
 </html>

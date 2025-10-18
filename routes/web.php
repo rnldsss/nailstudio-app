@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
 use App\Http\Controllers\NavbarController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\DiscountController;
 
 Route::get('/', function () {
     return view('home');
@@ -25,7 +27,7 @@ Route::get('/search', function () { return view('pages.search'); });
 // Rute untuk AJAX (Asumsi ini adalah file PHP murni yang akan Anda buat di public/cart/)
 Route::any('/cart/cart_api.php', function () { return response()->json(['message' => 'Cart API placeholder']); });
 Route::any('/cart/get_cart.php', function () { return 'Cart HTML placeholder'; });
-=======
+
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductAdminController;
 use App\Http\Controllers\AnalyticsController;
@@ -51,4 +53,40 @@ Route::get('/faq', [FaqMessageController::class, 'index'])->name('faq.index');
 
 // Route untuk submit jawaban (POST)
 Route::post('/faq/submit', [FaqMessageController::class, 'submitAnswer'])->name('faq.submit');
->>>>>>> e496c9c72586d30e299b72460ff76a03dac63300
+
+// Rute untuk menampilkan halaman Top Seller
+Route::get('/top-seller', [ProductController::class, 'topSellers'])->name('products.top');
+
+// Rute API yang akan dipanggil oleh JavaScript (Add to Cart dan Toggle Favorite)
+Route::post('/api/cart/add', [ProductController::class, 'addToCart'])->name('products.add-to-cart');
+Route::post('/api/products/favorite/toggle', [ProductController::class, 'toggleFavorite'])->name('products.toggle-favorite');
+
+// Route untuk menampilkan halaman Detail Produk
+Route::get('/product/{id}', [ProductController::class, 'show'])->name('products.detail');
+
+// Rute Top Sellers yang sudah kita buat
+Route::get('/top-sellers', [NavbarController::class, 'topSellers']); 
+
+// RUTE API CART & FAVORITE (HARUS DIBUAT UNTUK ASSESSMENT)
+// Asumsi Anda akan membuat Controller baru untuk menangani logika ini.
+// Di sini kita gunakan closure untuk placeholder sementara.
+
+// Rute Add to Cart (yang dipanggil dari JS: '../cart/add_to_cart.php')
+Route::post('/cart/add_to_cart.php', function() { 
+    // Di sini seharusnya memanggil CartController@addItem
+    // Placeholder: success = true agar JS tidak error
+    return response()->json(['success' => true, 'cart_count' => 1]); 
+});
+
+// Rute Toggle Favorite (yang dipanggil dari JS: 'favorite_api.php')
+Route::post('/favorite_api.php', function() { 
+    // Di sini seharusnya memanggil FavoriteController@toggle
+    // Placeholder: success = true agar JS tidak error
+    return response()->json(['success' => true, 'fav_count' => 1]); 
+
+    // Rute Add to Cart: Menggantikan route dummy sebelumnya
+    Route::get('/discount', [DiscountController::class, 'index'])->name('discount.index');
+});
+
+
+
