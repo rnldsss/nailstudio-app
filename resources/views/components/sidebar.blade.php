@@ -2,53 +2,34 @@
     <a href="{{ url('/') }}" class="brand">
         <img src="{{ asset('images/logonails.png')}}" width=75 height=75></img>
     </a>
-    <ul class="side-menu top">
-        {{-- Dashboard / Order/Transaction --}}
+   <ul class="side-menu top">
         <li class="{{ request()->routeIs('dashboard.index') ? 'active' : '' }}">
             <a href="{{ route('dashboard.index') }}">
                 <i class='bx bxs-dashboard' ></i>
-                <span class="text">Dashboard</span>
+                <span class="text">Admin Dashboard</span>
             </a>
         </li>
-        {{-- Link ke Produk (Contoh) --}}
-        <li>
-            <a href="{{ url('/products') }}">
+        <li class="{{ request()->routeIs('product.index') ? 'active' : '' }}">
+            <a href="{{ route('product.index') }}">
                 <i class='bx bxs-shopping-bag-alt' ></i>
-                <span class="text">My Product</span>
+                <span class="text">Product</span>
             </a>
         </li>
-        {{-- Link ke Analitik/Laporan (Contoh) --}}
-        <li>
-            <a href="{{ url('/analytics') }}">
-                <i class='bx bxs-doughnut-chart' ></i>
+        <li class="{{ request()->routeIs('analytics.index') ? 'active' : '' }}">
+            <a href="{{ route('analytics.index') }}">
+                <i class='bx bxs-chart' ></i> 
                 <span class="text">Analytics</span>
             </a>
         </li>
-        {{-- Link ke Pesan/Review (Contoh) --}}
-        <li>
-            <a href="{{ url('/message') }}">
-                <i class='bx bxs-message-dots' ></i>
-                <span class="text">Message</span>
+        <li class="{{ request()->routeIs('faq.index') ? 'active' : '' }}">
+            <a href="{{ route('faq.index') }}">
+                <i class='bx bxs-message-dots' ></i> 
+                <span class="text">FAQ Message</span>
             </a>
         </li>
-        {{-- Link ke Tim/User (Contoh) --}}
-        <li>
-            <a href="{{ url('/team') }}">
-                <i class='bx bxs-group' ></i>
-                <span class="text">Team</span>
-            </a>
-        </li>
+        {{-- Tambahkan link menu lainnya di sini --}}
     </ul>
-
     <ul class="side-menu">
-        {{-- Link ke Pengaturan (Contoh) --}}
-        <li>
-            <a href="{{ url('/settings') }}">
-                <i class='bx bxs-cog' ></i>
-                <span class="text">Settings</span>
-            </a>
-        </li>
-        {{-- Link Logout (Contoh) --}}
         <li>
             <a href="{{ url('/logout') }}" class="logout">
                 <i class='bx bxs-log-out-circle' ></i>

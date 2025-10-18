@@ -1,3 +1,4 @@
+{{-- PENTING: Sesuaikan dengan nama file layout Anda: app-admin --}}
 @extends('layouts.app-admin') 
 
 @section('content')
@@ -53,7 +54,9 @@
                         <td>#{{ str_pad($order['id'], 3, '0', STR_PAD_LEFT) }}</td>
                         <td>{{ htmlspecialchars($order['fullname']) }}</td>
                         <td>{{ date('d-m-Y', strtotime($order['order_date'])) }}</td>
+                        {{-- Daftar Barang --}}
                         <td><ul>@foreach ($order['barang'] as $b)<li>{{ htmlspecialchars($b) }}</li>@endforeach</ul></td>
+                        {{-- Harga per Item --}}
                         <td><ul>@foreach ($order['harga'] as $h)<li>{{ $h }}</li>@endforeach</ul></td>
                         <td>Rp {{ number_format($order['total'], 0, ',', '.') }}</td>
                         <td>
@@ -64,7 +67,7 @@
                             @endif
                         </td>
                         <td>
-                            {{-- FORM DENGAN ONCHANGE (Sudah diuji aman jika cache bersih) --}}
+                            {{-- Form Update Status --}}
                             <form method="post" action="{{ route('dashboard.updateStatus') }}">
                                 @csrf 
                                 <input type="hidden" name="order_id" value="{{ $order['id'] }}">
@@ -79,6 +82,7 @@
                             </form>
                         </td>
                         <td>
+                            {{-- Link Detail (menggunakan helper url()) --}}
                             <a href="{{ url('order_detail/' . $order['id']) }}" class="text-sm bg-pink-600 text-white px-3 py-1 rounded hover:bg-pink-700 transition">Detail</a>
                         </td>
                     </tr>
@@ -86,4 +90,5 @@
             </tbody>
         </table>
     </div>
+</main>
 @endsection
