@@ -5,6 +5,14 @@ use App\Http\Controllers\NavbarController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\DiscountController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductAdminController;
+use App\Http\Controllers\AnalyticsController;
+use App\Http\Controllers\FaqMessageController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\StockManagementController;
+
+
 
 Route::get('/', function () {
     return view('home');
@@ -54,6 +62,7 @@ Route::get('/faq', [FaqMessageController::class, 'index'])->name('faq.index');
 // Route untuk submit jawaban (POST)
 Route::post('/faq/submit', [FaqMessageController::class, 'submitAnswer'])->name('faq.submit');
 
+
 // Rute untuk menampilkan halaman Top Seller
 Route::get('/top-seller', [ProductController::class, 'topSellers'])->name('products.top');
 
@@ -89,4 +98,15 @@ Route::post('/favorite_api.php', function() {
 });
 
 
+// Route untuk Transaction History
+Route::get('/transaction-history', [TransactionController::class, 'index'])->name('transaction.history');
+
+// Halaman utama Management Stock & Harga
+Route::get('/stock-management', [StockManagementController::class, 'index'])->name('stock.index');
+
+// AJAX Endpoint untuk Tambah Stock
+Route::post('/stock/add', [StockManagementController::class, 'updateStock'])->name('stock.updateStock');
+
+// AJAX Endpoint untuk Ubah Harga/Diskon
+Route::post('/stock/price', [StockManagementController::class, 'updatePrice'])->name('stock.updatePrice');
 

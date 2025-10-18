@@ -27,6 +27,18 @@
                 <span class="text">FAQ Message</span>
             </a>
         </li>
+        <li class="{{ request()->routeIs('transaction.history') ? 'active' : '' }}">
+            <a href="{{ route('transaction.history') }}">
+                <i class='bx bxs-time' ></i> 
+                <span class="text">Transaction History</span>
+            </a>
+        </li>
+        <li class="{{ request()->routeIs('stock.index') ? 'active' : '' }}">
+            <a href="{{ route('stock.index') }}">
+                <i class='bx bxs-adjust' ></i> 
+                <span class="text">Management Stock & Harga</span>
+            </a>
+        </li>
         {{-- Tambahkan link menu lainnya di sini --}}
     </ul>
     <ul class="side-menu">
