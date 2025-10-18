@@ -1,8 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
 use App\Http\Controllers\NavbarController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProductAdminController;
+use App\Http\Controllers\AnalyticsController;
+use App\Http\Controllers\FaqMessageController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\StockManagementController;
+
 
 Route::get('/', function () {
     return view('home');
@@ -25,11 +31,6 @@ Route::get('/search', function () { return view('pages.search'); });
 // Rute untuk AJAX (Asumsi ini adalah file PHP murni yang akan Anda buat di public/cart/)
 Route::any('/cart/cart_api.php', function () { return response()->json(['message' => 'Cart API placeholder']); });
 Route::any('/cart/get_cart.php', function () { return 'Cart HTML placeholder'; });
-=======
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProductAdminController;
-use App\Http\Controllers\AnalyticsController;
-use App\Http\Controllers\FaqMessageController;
 
 // Route GET untuk menampilkan Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
@@ -51,4 +52,15 @@ Route::get('/faq', [FaqMessageController::class, 'index'])->name('faq.index');
 
 // Route untuk submit jawaban (POST)
 Route::post('/faq/submit', [FaqMessageController::class, 'submitAnswer'])->name('faq.submit');
->>>>>>> e496c9c72586d30e299b72460ff76a03dac63300
+
+// Route untuk Transaction History
+Route::get('/transaction-history', [TransactionController::class, 'index'])->name('transaction.history');
+
+// Halaman utama Management Stock & Harga
+Route::get('/stock-management', [StockManagementController::class, 'index'])->name('stock.index');
+
+// AJAX Endpoint untuk Tambah Stock
+Route::post('/stock/add', [StockManagementController::class, 'updateStock'])->name('stock.updateStock');
+
+// AJAX Endpoint untuk Ubah Harga/Diskon
+Route::post('/stock/price', [StockManagementController::class, 'updatePrice'])->name('stock.updatePrice');

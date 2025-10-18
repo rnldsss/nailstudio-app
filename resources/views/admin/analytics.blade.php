@@ -153,7 +153,7 @@ new Chart(document.getElementById('orderChart'), {
 }
 
 .sales-analytics-scroll canvas {
-    width: 800px; /* Set canvas width to allow scrolling */
+    width: 250px; /* Set canvas width to allow scrolling */
     height: 250px; /* Set height */
     flex-shrink: 0;
     margin: 0 10px; 
