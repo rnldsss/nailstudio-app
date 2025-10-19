@@ -89,7 +89,7 @@
       let fd = new FormData();
       fd.append('product_id', productId);
       // PENTING: Menggunakan URL Laravel yang sudah didaftarkan di routes/web.php
-      fetch('{{ url("cart/add_to_cart.php") }}', { 
+      fetch('{{ route('cart.add') }}', { 
         method: 'POST',
         body: fd
       })
@@ -118,7 +118,7 @@
         fd.append('product_id', pid);
 
         // PENTING: Menggunakan URL Laravel yang sudah didaftarkan di routes/web.php
-        fetch('{{ url("favorite_api.php") }}', { 
+        fetch('{{ route('favorite.toggle') }}', { 
           method: 'POST',
           body: fd
         })

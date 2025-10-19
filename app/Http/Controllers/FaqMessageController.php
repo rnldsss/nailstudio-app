@@ -79,6 +79,6 @@ class FaqMessageController extends Controller
         // --- END SIMULASI ---
 
         // Setelah update dan insert (simulasi), redirect dengan pesan sukses
-        return redirect()->route('faq.index')->with('success', 'Jawaban berhasil dipublish & ditambahkan ke FAQ (Simulasi DB).');
+        return redirect()->route('admin.faq.index')->with('success', 'Jawaban berhasil dipublish & ditambahkan ke FAQ (Simulasi DB).');
     }
 }

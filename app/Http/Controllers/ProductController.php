@@ -17,8 +17,8 @@ class ProductController extends Controller
     {
         // Data Kategori Dummy
         $categories = [
-            ['name' => 'Nail Polish', 'url' => url('category/polish'), 'img' => 'https://storage.googleapis.com/a1aa/image/3454039a-1ec0-4d5b-d768-5eb40bc6fdf3.jpg', 'alt' => 'Nail Polish'],
-            ['name' => 'Nail Tools', 'url' => url('category/tools'), 'img' => 'https://storage.googleapis.com/a1aa/image/19a38516-0222-4fe4-e0e8-8b6788672e73.jpg', 'alt' => 'Nail Tools'],
+            ['name' => 'Nail Polish', 'url' => route('categories.show', ['slug' => 'nail-polish']), 'img' => 'https://storage.googleapis.com/a1aa/image/3454039a-1ec0-4d5b-d768-5eb40bc6fdf3.jpg', 'alt' => 'Nail Polish'],
+            ['name' => 'Nail Tools', 'url' => route('categories.show', ['slug' => 'nail-tools']), 'img' => 'https://storage.googleapis.com/a1aa/image/19a38516-0222-4fe4-e0e8-8b6788672e73.jpg', 'alt' => 'Nail Tools'],
         ];
 
         // Data Badge & User Status Dummy

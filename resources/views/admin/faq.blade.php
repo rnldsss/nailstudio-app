@@ -7,7 +7,7 @@
         <ul class="breadcrumb">
             <li><a href="{{ route('dashboard.index') }}">Dashboard</a></li>
             <li><i class='bx bx-chevron-right'></i></li>
-            <li><a class="active" href="{{ route('faq.index') }}">FAQ</a></li>
+            <li><a class="active" href="{{ route('admin.faq.index') }}">FAQ</a></li>
         </ul>
     </div>
 </div>
@@ -30,7 +30,7 @@
                 <div class='faq-answer'><b>Jawaban Admin:</b><br>{!! nl2br(htmlspecialchars($faq['answer'])) !!}</div>
             @else
                 {{-- Form jawaban untuk admin --}}
-                <form method="post" action="{{ route('faq.submit') }}" class="faq-answer-form">
+                <form method="post" action="{{ route('admin.faq.submit') }}" class="faq-answer-form">
                     @csrf 
                     <input type="hidden" name="faq_id" value="{{ $faq['id'] }}">
                     <textarea name="answer" rows="2" required placeholder="Tulis jawaban admin..."></textarea>

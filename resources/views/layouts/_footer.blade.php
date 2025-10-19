@@ -47,7 +47,7 @@
         </div>
         
         {{-- Form dikoreksi menggunakan route() Laravel dan CSRF --}}
-        <form action="{{ route('newsletter.subscribe') }}" method="POST" class="flex w-full sm:w-auto gap-3">
+        <form action="{{ route('footer.subscribe') }}" method="POST" class="flex w-full sm:w-auto gap-3">
             @csrf {{-- Wajib ada untuk Laravel Form Security --}}
             <input class="flex-grow sm:flex-grow-0 sm:w-[220px] rounded-md border border-gray-300 px-4 py-2 text-sm text-[#1a1a1a] placeholder:text-[#4b4b4b] focus:outline-none focus:ring-2 focus:ring-black" placeholder="Enter your email" required="" type="email" name="email" value="{{ old('email') }}"/>
             <button class="bg-black text-white rounded-md px-5 py-2 text-sm font-semibold hover:bg-gray-900 transition" type="submit">

@@ -7,12 +7,11 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     /**
-     * Menampilkan daftar semua kategori (Shop by Category).
+     * Data kategori dummy yang dipakai di seluruh halaman kategori.
      */
-    public function index()
+    private function getCategories(): array
     {
-        // Data Kategori Dibuat di Controller (Menggantikan hardcoded HTML)
-        $categories = [
+        return [
             [
                 'name' => 'Nail Polish',
                 'description' => 'Discover a wide range of vibrant nail polish colors to express your style and keep your nails looking flawless.',
@@ -38,7 +37,93 @@ class CategoryController extends Controller
                 'slug' => 'nail-art-kits'
             ],
         ];
+    }
+
+    /**
+     * Menampilkan daftar semua kategori (Shop by Category).
+     */
+    public function index()
+    {
+        $categories = $this->getCategories();
 
         return view('pages.categories_list', compact('categories'));
+    }
+
+    /**
+     * Menampilkan detail kategori dan produk rekomendasi.
+     */
+    public function show(string $slug)
+    {
+        $category = collect($this->getCategories())->firstWhere('slug', $slug);
+
+        if (!$category) {
+            abort(404);
+        }
+
+        $productsBySlug = [
+            'nail-polish' => [
+                [
+                    'name' => 'Classic Pink Gloss',
+                    'price' => 69000,
+                    'image' => 'https://via.placeholder.com/240x240.png?text=Pink+Gloss',
+                    'description' => 'Finishing glossy yang tahan lama untuk tampilan elegan setiap hari.',
+                ],
+                [
+                    'name' => 'Sparkle Night Out',
+                    'price' => 72000,
+                    'image' => 'https://via.placeholder.com/240x240.png?text=Sparkle',
+                    'description' => 'Pilihan glitter glamor untuk momen spesial yang memikat.',
+                ],
+            ],
+            'nail-tools' => [
+                [
+                    'name' => 'Pro Manicure Kit',
+                    'price' => 159000,
+                    'image' => 'https://via.placeholder.com/240x240.png?text=Manicure+Kit',
+                    'description' => 'Set lengkap alat manicure profesional untuk hasil salon di rumah.',
+                ],
+                [
+                    'name' => 'Precision Nail File Set',
+                    'price' => 45000,
+                    'image' => 'https://via.placeholder.com/240x240.png?text=Nail+File',
+                    'description' => 'Paket 3 nail file dengan grit berbeda untuk bentuk kuku sempurna.',
+                ],
+            ],
+            'nail-care' => [
+                [
+                    'name' => 'Cuticle Care Oil',
+                    'price' => 49000,
+                    'image' => 'https://via.placeholder.com/240x240.png?text=Cuticle+Oil',
+                    'description' => 'Nutrisi intensif untuk kuku dan kutikula agar tetap sehat dan kuat.',
+                ],
+                [
+                    'name' => 'Keratin Nail Treatment',
+                    'price' => 68000,
+                    'image' => 'https://via.placeholder.com/240x240.png?text=Keratin+Treatment',
+                    'description' => 'Formula keratin untuk memperbaiki kuku rapuh dan mudah patah.',
+                ],
+            ],
+            'nail-art-kits' => [
+                [
+                    'name' => 'Beginner Nail Art Set',
+                    'price' => 129000,
+                    'image' => 'https://via.placeholder.com/240x240.png?text=Beginner+Kit',
+                    'description' => 'Semua perlengkapan dasar untuk mulai berkreasi dengan nail art.',
+                ],
+                [
+                    'name' => 'Deluxe Rhinestone Pack',
+                    'price' => 89000,
+                    'image' => 'https://via.placeholder.com/240x240.png?text=Rhinestones',
+                    'description' => 'Koleksi rhinestone premium untuk desain kuku yang mewah dan unik.',
+                ],
+            ],
+        ];
+
+        $recommendedProducts = $productsBySlug[$slug] ?? [];
+
+        return view('pages.category_detail', [
+            'category' => $category,
+            'recommendedProducts' => $recommendedProducts,
+        ]);
     }
 }

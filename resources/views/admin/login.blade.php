@@ -36,7 +36,10 @@
             <div class="form-container">
                 <h2>Login</h2> 		
                             
-                {{-- Menampilkan error dari session flash data (Menggantikan if (!empty($error))) --}}
+                {{-- Menampilkan pesan sukses maupun error dari session --}}
+                @if (session('success'))        
+                    <div class="success">{{ session('success') }}</div>    
+                @endif
                 @if (session('error')) 		
                     <div class="error">{{ session('error') }}</div> 	
                 @endif 	
@@ -57,8 +60,8 @@
                 </form>
                 
                 <div class="login-link"> 				
-                    Don't have an account? <a href="{{ url('register') }}">Sign Up</a> 			
-                    {{-- Menggunakan url('register') untuk menunjuk ke register.php --}}
+                    Don't have an account? <a href="{{ route('register') }}">Sign Up</a> 			
+                    {{-- Menggunakan named route register untuk navigasi --}}
                 </div>
             </div>
         </div> 	

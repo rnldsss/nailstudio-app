@@ -22,8 +22,8 @@
                 <span class="text">Analytics</span>
             </a>
         </li>
-        <li class="{{ request()->routeIs('faq.index') ? 'active' : '' }}">
-            <a href="{{ route('faq.index') }}">
+        <li class="{{ request()->routeIs('admin.faq.index') ? 'active' : '' }}">
+            <a href="{{ route('admin.faq.index') }}">
                 <i class='bx bxs-message-dots' ></i> 
                 <span class="text">FAQ Message</span>
             </a>
@@ -44,7 +44,7 @@
     </ul>
     <ul class="side-menu">
         <li>
-            <a href="{{ url('/logout') }}" class="logout">
+            <a href="{{ route('logout') }}" class="logout">
                 <i class='bx bxs-log-out-circle' ></i>
                 <span class="text">Logout</span>
             </a>

@@ -83,7 +83,7 @@
            </ul>
 
             <nav class="divide-y divide-gray-200 border-t border-b border-gray-200 mt-3">
-                <a href="{{ url('register') }}" class="flex items-center gap-3 py-3 text-gray-700 hover:text-pink-600 text-base font-normal transition-colors">
+                <a href="{{ route('register') }}" class="flex items-center gap-3 py-3 text-gray-700 hover:text-pink-600 text-base font-normal transition-colors">
                     <i class="far fa-user text-lg w-5 text-center"></i> Sign in
                 </a>
                 <a href="{{ url('favorite') }}" class="flex items-center gap-3 py-3 text-gray-700 hover:text-pink-600 text-base font-normal transition-colors">
@@ -322,7 +322,7 @@
                 var isLoggedIn = {{ Session::has('id') || Session::has('user_id') ? 'true' : 'false' }};
                 if (!isLoggedIn) {
                     alert('Anda harus login terlebih dahulu!');
-                    window.location.href = '{{ url('login') }}';
+                    window.location.href = '{{ route('login') }}';
                     return;
                 }
                 openCartModal();
@@ -432,7 +432,7 @@
                     var isLoggedIn = {{ Session::has('id') || Session::has('user_id') ? 'true' : 'false' }};
                     if (!isLoggedIn) {
                          alert('Anda harus login terlebih dahulu!');
-                         window.location.href = '{{ url('login') }}';
+                        window.location.href = '{{ route('login') }}';
                          return;
                     }
                     openCartModal();

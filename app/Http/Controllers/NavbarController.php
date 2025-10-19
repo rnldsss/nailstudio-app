@@ -41,25 +41,25 @@ class NavbarController extends Controller
                 "name" => "Nail Polish",
                 "img" => "https://storage.googleapis.com/a1aa/image/3454039a-1ec0-4d5b-d768-5eb40bc6fdf3.jpg",
                 "alt" => "Classic manicure nails with red polish on a light pink background",
-                "url" => url('products/nail-polish') 
+                "url" => route('categories.show', ['slug' => 'nail-polish'])
             ],
             [
                 "name" => "Nail Tools",
                 "img" => "https://storage.googleapis.com/a1aa/image/19a38516-0222-4fe4-e0e8-8b6788672e73.jpg",
                 "alt" => "Gel nails with shiny finish on a light pink background",
-                "url" => url('products/nail-tools')
+                "url" => route('categories.show', ['slug' => 'nail-tools'])
             ],
             [
                 "name" => "Nail Care",
                 "img" => "https://storage.googleapis.com/a1aa/image/795a778f-295f-402e-a035-64817b5dd80d.jpg",
                 "alt" => "Nail art with floral and geometric designs on a light pink background",
-                "url" => url('products/nail-care')
+                "url" => route('categories.show', ['slug' => 'nail-care'])
             ],
             [
                 "name" => "Nail Art Kit",
                 "img" => "https://storage.googleapis.com/a1aa/image/20882152-849e-49b3-885b-fbfe303673a2.jpg",
                 "alt" => "Acrylic nails with glitter and rhinestones on a light pink background",
-                "url" => url('products/nail-art-kit')
+                "url" => route('categories.show', ['slug' => 'nail-art-kits'])
             ],
         ];
 
