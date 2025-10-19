@@ -112,9 +112,13 @@ function searchProducts() {
 </script>
 @endsection
 
-{{-- Pindahkan CSS ke Section Styles (Jika Anda tidak menyimpannya di style2.css) --}}
+{{-- Pindahkan CSS ke Section Styles --}}
 @section('styles')
 <style>
+/* FIX CSS: Menargetkan TH di dalam table-container agar teks hitam (#000000) */
+.table-container th {
+    color: #000000 !important; 
+}
 /* Salin semua CSS yang terkait dengan produk (product-page, header-actions, status-badge, dll.) dari kode Native Anda ke sini */
 .product-page { padding: 20px; background-color: #fff; border-radius: 8px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); }
 .header-actions { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }

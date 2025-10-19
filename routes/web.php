@@ -11,6 +11,7 @@ use App\Http\Controllers\AnalyticsController;
 use App\Http\Controllers\FaqMessageController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\StockManagementController;
+use App\Http\Controllers\LoginController;
 
 
 
@@ -71,9 +72,6 @@ Route::get('/product/{id}', [ProductController::class, 'show'])->name('products.
 // Rute Top Sellers yang sudah kita buat
 Route::get('/top-sellers', [NavbarController::class, 'topSellers']); 
 
-// RUTE API CART & FAVORITE (HARUS DIBUAT UNTUK ASSESSMENT)
-// Asumsi Anda akan membuat Controller baru untuk menangani logika ini.
-// Di sini kita gunakan closure untuk placeholder sementara.
 
 // Rute Add to Cart (yang dipanggil dari JS: '../cart/add_to_cart.php')
 Route::post('/cart/add_to_cart.php', function() { 
@@ -104,4 +102,10 @@ Route::post('/stock/add', [StockManagementController::class, 'updateStock'])->na
 
 // AJAX Endpoint untuk Ubah Harga/Diskon
 Route::post('/stock/price', [StockManagementController::class, 'updatePrice'])->name('stock.updatePrice');
+
+// Route untuk menampilkan formulir login (GET)
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+
+// Route untuk memproses login (POST)
+Route::post('/login', [LoginController::class, 'login'])->name('login.post');
 

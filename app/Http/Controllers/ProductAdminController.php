@@ -49,9 +49,9 @@ class ProductAdminController extends Controller
         return view('admin/product', ['formattedProducts' => $formattedProducts, 'success' => session('success'), 'error' => session('error')]);
     }
     
-    public function create() { return view('product.create'); }
+    public function create() { return view('admin/create'); }
     public function store(Request $request) { return redirect()->route('product.index')->with('success', 'Product added (Simulasi)!'); }
-    public function edit($id) { return view('product.edit', compact('id')); }
+    public function edit($id) { return view('admin/edit', compact('id')); }
     public function destroy($id) { return redirect()->route('product.index')->with('success', 'Product deleted (Simulasi)!'); }
 
 }
