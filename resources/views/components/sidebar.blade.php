@@ -1,6 +1,7 @@
+
 <section id="sidebar">
-    <a href="{{ url('/') }}" class="brand">
-        <img src="{{ asset('images/logonails.png')}}" width=75 height=75></img>
+    <a href="{{ url('/') }}" class="brand" style="background-color: white;">
+        <img src="{{ asset('images/logonails.png')}}" width=75 height=75 ></img>
     </a>
    <ul class="side-menu top">
         <li class="{{ request()->routeIs('dashboard.index') ? 'active' : '' }}">
@@ -49,4 +50,5 @@
             </a>
         </li>
     </ul>
+
 </section>

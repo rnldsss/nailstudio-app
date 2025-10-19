@@ -1,5 +1,5 @@
 <nav>
-    <i class='bx bx-menu' ></i> {{-- Ini adalah ikon menu untuk toggle sidebar --}}
+    <i class='bx bx-menu'  ></i> {{-- Ini adalah ikon menu untuk toggle sidebar --}}
     
     {{-- START: Search Bar --}}
     <form action="#" class="search">
@@ -16,6 +16,6 @@
         <span class="num">10</span>
     </a>
     <a href="#" class="profile">
-        <img src="{{ asset('images/profile.jpg') }}"> {{-- Ganti dengan path ke gambar admin --}}
+        <img src="{{ asset('images/profile.jpg') }}"> 
     </a>
 </nav>

@@ -91,8 +91,6 @@ return response()->json(['success' => true, 'cart_count' => 1]);
 
 // Rute Toggle Favorite (yang dipanggil dari JS: 'favorite_api.php')
 Route::post('/favorite_api.php', function() { 
-    // Di sini seharusnya memanggil FavoriteController@toggle
-    // Placeholder: success = true agar JS tidak error
     return response()->json(['success' => true, 'fav_count' => 1]); 
 
     // Rute Add to Cart: Menggantikan route dummy sebelumnya

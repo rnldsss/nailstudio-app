@@ -100,9 +100,9 @@ body {
 }
 
 #sidebar.hide {
-	width: 70px;
+	width: 80px;
 	display: none;
-	transform: translateX(-100%); /* Sembunyikan sidebar ke kiri */
+	transform: translateX(-50%); /* Sembunyikan sidebar ke kiri */
 
 }
 
