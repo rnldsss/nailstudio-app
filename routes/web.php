@@ -36,11 +36,6 @@ Route::get('/search', function () { return view('pages.search'); });
 Route::any('/cart/cart_api.php', function () { return response()->json(['message' => 'Cart API placeholder']); });
 Route::any('/cart/get_cart.php', function () { return 'Cart HTML placeholder'; });
 
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProductAdminController;
-use App\Http\Controllers\AnalyticsController;
-use App\Http\Controllers\FaqMessageController;
-
 // Route GET untuk menampilkan Dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
