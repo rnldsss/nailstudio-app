@@ -12,6 +12,7 @@ use App\Http\Controllers\FaqMessageController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\StockManagementController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
 
 
 
@@ -82,8 +83,6 @@ Route::post('/cart/add_to_cart.php', function() {
 
 // Rute Toggle Favorite (yang dipanggil dari JS: 'favorite_api.php')
 Route::post('/favorite_api.php', function() { 
-    // Di sini seharusnya memanggil FavoriteController@toggle
-    // Placeholder: success = true agar JS tidak error
     return response()->json(['success' => true, 'fav_count' => 1]); 
 
     // Rute Add to Cart: Menggantikan route dummy sebelumnya
@@ -108,4 +107,7 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 
 // Route untuk memproses login (POST)
 Route::post('/login', [LoginController::class, 'login'])->name('login.post');
+
+// Route Logout
+Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 
