@@ -64,6 +64,7 @@ Route::match(['get', 'post'], '/faq', [FaqController::class, 'index'])->name('fa
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::post('/dashboard/update-status', [DashboardController::class, 'updateStatus'])->name('dashboard.updateStatus');
+Route::get('/order_detail/{id}', [DashboardController::class, 'showDetail'])->name('order.detail');
 
 Route::get('/product', [ProductAdminController::class, 'index'])->name('product.index');
 Route::get('/product/create', [ProductAdminController::class, 'create'])->name('product.create');

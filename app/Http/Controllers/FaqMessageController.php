@@ -36,9 +36,7 @@ class FaqMessageController extends Controller
         ];
     }
 
-    /**
-     * Menampilkan daftar pertanyaan dari member.
-     */
+    
     public function index()
     {
         // 2. Ambil semua pertanyaan dari user (mensimulasikan ORDER BY created_at DESC)
@@ -50,10 +48,7 @@ class FaqMessageController extends Controller
         return view('admin/faq', compact('faqs', 'success'));
     }
 
-    /**
-     * Proses submit jawaban admin (POST).
-     * Mensimulasikan UPDATE faq_questions dan INSERT INTO faq.
-     */
+    
     public function submitAnswer(Request $request)
     {
         $request->validate([
@@ -64,21 +59,10 @@ class FaqMessageController extends Controller
         $faq_id = $request->faq_id;
         $answer = $request->answer;
 
-        // --- SIMULASI LOGIKA DATABASE ---
+       
+        $simulated_question = "Apakah produk ini tahan air?"; 
+
         
-        // 1. Simulasi UPDATE faq_questions (Set status='answered')
-        // (Di Laravel, Anda akan menggunakan Eloquent di sini: FaqQuestion::find($faq_id)->update(['answer' => $answer, 'status' => 'answered']))
-
-        // 2. Simulasi Ambil pertanyaan (question) yang baru dijawab
-        //    (Di sini kita asumsikan data yang dibutuhkan sudah ada/diambil)
-        $simulated_question = "Apakah produk ini tahan air?"; // Ambil question dari DB
-
-        // 3. Simulasi Cek dan Tambahkan ke tabel FAQ publik
-        // (Di Laravel, Anda akan menggunakan DB::table('faq')->updateOrInsert(...) atau Transaction)
-        
-        // --- END SIMULASI ---
-
-        // Setelah update dan insert (simulasi), redirect dengan pesan sukses
         return redirect()->route('admin.faq.index')->with('success', 'Jawaban berhasil dipublish & ditambahkan ke FAQ (Simulasi DB).');
     }
 }

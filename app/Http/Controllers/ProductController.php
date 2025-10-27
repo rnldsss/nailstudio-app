@@ -93,7 +93,7 @@ class ProductController extends Controller
         ]);
         
         // Mengirimkan data ke View 'detail_product'
-        return view('detail_product', $data);
+        return view('admin/create', $data);
     }
     
     // =================================================================

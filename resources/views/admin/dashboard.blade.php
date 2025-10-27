@@ -78,7 +78,8 @@
                             </form>
                         </td>
                         <td>
-                            <a href="{{ url('order_detail/' . $order['id']) }}" class="text-sm bg-pink-600 text-white px-3 py-1 rounded hover:bg-pink-700 transition">Detail</a>
+                            {{-- MODIFIKASI: Menambahkan kelas btn-detail-black-text --}}
+                            <a href="{{ url('order_detail/' . $order['id']) }}" class="btn-detail-black-text text-sm bg-pink-600 px-3 py-1 rounded hover:bg-pink-700 transition">Detail</a>
                         </td>
                     </tr>
                 @endforeach
@@ -87,14 +88,18 @@
     </div>
 @endsection
 
-{{-- TAMBAHAN: Styles Section untuk menimpa warna header tabel --}}
+{{-- TAMBAHAN: Styles Section untuk menimpa warna teks header dan tombol detail --}}
 @section('styles')
 <style>
-/* FIX CSS: Menargetkan TH di dalam table-container 
-   dan memaksa warna teks menjadi hitam (#000000) agar terbaca jelas di atas background merah.
-*/
+/* FIX 1: Teks Header (TH) menjadi Hitam (Sesuai permintaan sebelumnya) */
 .table-container th {
     color: #000000 !important; 
+}
+
+/* FIX 2: Tombol Detail menjadi Hitam */
+.btn-detail-black-text {
+    /* Menimpa class Tailwind 'text-white' */
+    color: #000000 !important; /* Warna teks HITAM */
 }
 </style>
 @endsection
